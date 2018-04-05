@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .liststyle{
+            background-image: url(arrow.jpg);
+            background-repeat: no-repeat;
+            background-position: left;
+            background-size: 20px ;
+            padding-left: 30px;
+            display: inline;
+        }
+        .uliststyle{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: inline;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+            $('ul').addClass('uliststyle');
+            $('ul li ul li').addClass('liststyle');
+        });
+    </script>
+</head>
+<body>
+    <ul id="menu">
+        <li>
+            <a href="http://example.com">Books</a>
+            <ul>
+                <li><a href="http://example.com">Web Development</a></li>
+                <li><a href="http://example.com">Programming</a></li>
+                <li><a href="http://example.com">RDBMS</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

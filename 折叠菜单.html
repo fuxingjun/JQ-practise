@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .menus {
+            width: 200px;
+            padding: 5px;
+            margin: 1px;
+            font-weight: bold;
+            background-color: #0ff;
+        }
+
+        .menuitems {
+            display: none;
+        }
+
+        a {
+            display: block;
+            border-bottom: 1px solid #fff;
+            text-decoration: none;
+            background-color: #00f;
+            color: #fff;
+            margin: 0;
+            padding: 10px;
+            font-weight: bold;
+            width: 190px;
+        }
+
+        .menuitems a:hover {
+            background-color: #000;
+        }
+
+        li {
+            display: inline;
+        }
+
+        ul {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menuitems {
+            /* height: 126px; */
+            width: 210px;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            // $('div.menuitems').mouseleave(function () {//mouseout子元素有影响,同时记得制定元素范围
+            //     $('div.menuitems').slideUp('slow');
+            //     $('p').css({ 'backgroundImage': "" });
+            // });
+            $('p.menus').click(function () {
+                if ($(this).next("div.menuitems").css("display") == "none") {
+                    $(this).css({
+                        "background-image": "url(down.png)",
+                        "background-repeat": "no-repeat",
+                        "background-position": "right"
+                    }).next("div.menuitems").slideDown(500);//.siblings('div.menuitems').slideUp('slow');
+                    $(this).siblings().css({ "backgroundImage": "" });
+                } else {
+                    $(this).css({ 'backgroundImage': "" });
+                    $(this).next('div.menuitems').slideUp('slow');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <p class="menus">Books</p>
+        <div class="menuitems">
+            <ul>
+                <li>
+                    <a href="http://example.com">Web Development</a>
+                </li>
+                <li>
+                    <a href="http://example.com">Programming</a>
+                </li>
+                <li>
+                    <a href="http://example.com">RDBMS</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <p class="menus">Movies</p>
+        <div class="menuitems">
+            <ul>
+                <li>
+                    <a href="http://example.com">Latest Movies Trailers</a>
+                </li>
+                <li>
+                    <a href="http://example.com">Movies Reviews</a>
+                </li>
+                <li>
+                    <a href="http://example.com">Celebrity Interviews</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

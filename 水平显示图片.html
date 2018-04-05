@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            var $pic = $('#images a');
+            $pic.hide();
+            var imgs = $pic.length;
+            var next;
+            for (var i = 0; i < imgs; i++) {
+                next = $pic.eq(i);
+                next.css({ 'position': 'absolute', 'top': 220 * i });
+                next.show();
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div id="images">
+        <a href="http://example.com">
+            <img src="ball.jpg" alt="">
+        </a>
+        <a href="http://example.com">
+            <img src="ball.jpg" alt="">
+        </a>
+        <a href="http://example.com">
+            <img src="ball.jpg" alt="">
+        </a>
+        <a href="http://example.com">
+            <img src="ball.jpg" alt="">
+        </a>
+        <a href="http://example.com">
+            <img src="ball.jpg" alt="">
+        </a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>select元素</title>
+    <style>
+        .label {
+            float: left;
+            width: 180px;
+        }
+
+        .infobox {
+            width: 150px;
+        }
+
+        .error {
+            color: red;
+            padding-left: 10px;
+        }
+
+        .submit {
+            margin-left: 180px;
+            margin-top: 10px;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.error').hide();
+            $('.submit').click(function (event) {
+                var count = $('select option:selected').val();
+                if (count == 0) {
+                    $('p.result').hide();
+                    $('.error').show();
+                } else {
+                    $('.error').hide();
+                    $('p.result').show();
+                    $('p.result').text('You have selected ' + $('select option:selected').text());
+                }
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <span class="label">Select the Food Item</span>
+        <select name="" id="food" class="infobox">
+            <option value="0">Select a Food</option>
+            <option value="Pizza $5">Pizza $5</option>
+            <option value="Hotdog $2">Hotdog $2</option>
+            <option value="Coke $1">Coke $1</option>
+            <option value="French Fries $3">French Fries $3</option>
+        </select>
+        <p class="error">You have not selected any Option</p>
+        <p class="result"></p>
+        <input type="submit" class="submit" value="Submit">
+    </form>
+</body>
+
+</html>

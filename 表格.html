@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .hover {
+            background-color: #00f;
+            color: #fff;
+        }
+
+        .page {
+            margin: 5px;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            var rows = $('table').find('tbody tr').length;
+            var pageRows = 1;
+            var pages = Math.ceil(rows / pageRows);
+            var $pagediv = $('<div id = "pages"></div>');
+            for (var i = 0; i < pages; i++) {
+                $('<span class="page">' + (i + 1) + '</span>').appendTo($pagediv);
+            }
+            $pagediv.insertBefore('table');
+
+            $('.page').hover(
+                function () {
+                    $(this).addClass('hover');
+                },
+                function () {
+                    $(this).removeClass('hover');
+                }
+            );
+
+            $('table').find('tbody tr').hide();
+            var tr = $('table tbody tr');
+
+            for (var i = 0; i <= pageRows - 1; i++) {
+                $(tr[i]).show();
+            }
+            $('span').click(function () {
+                $('table').find('tbody tr').hide();
+                for (var i = ($(this).text() - 1) * pageRows; i <= $(this).text() * pageRows - 1; i++) {
+                    $(tr[i]).show();
+                }
+            });
+            // $('table th:not(:nth-child(1))').hide();
+        });
+    </script>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Roll</th>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>John</td>
+                <td>87</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Naman</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Chirag</td>
+                <td>85</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

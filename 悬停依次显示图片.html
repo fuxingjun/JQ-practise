@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .imge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            // $('.imge').hide();
+            // $('.imge:first').fadeIn('slow');
+            // $('.imge').hover(
+            //     function () {
+            //         $(this).fadeIn('slow');
+            //     },
+            //     function () {
+            //         var next = ($(this).next().length) ? $(this).next() : $('.imge:first');
+            //         $(this).fadeOut('slow');
+            //         next.fadeIn('slow');
+            //     }
+            // );
+            $('.imge').hide();
+            var next;
+            $('.imge:first').fadeIn('slow');
+            $('.imge').click(function (event) {
+                next = ($(this).next().length) ? $(this).next() : $('.imge:first');
+                $(this).fadeOut('slow');
+                next.fadeIn('slow');
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <a href="http://example.com" class="imge">
+        <img src="images/1.jpg" width="640px" height="360px">
+    </a>
+    <a href="http://example.com" class="imge">
+        <img src="images/2.jpg" width="640px" height="360px">
+    </a>
+    <a href="http://example.com" class="imge">
+        <img src="images/3.jpg" width="640px" height="360px">
+    </a>
+    <a href="http://example.com" class="imge">
+        <img src="images/4.jpg" width="640px" height="360px">
+    </a>
+    <a href="http://example.com" class="imge">
+        <img src="images/5.jpg" width="640px" height="360px">
+    </a>
+</body>
+
+</html>

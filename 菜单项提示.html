@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 200px;
+        }
+
+        ul li ul {
+            list-style-type: none;
+            margin: 5px;
+            width: 200px;
+        }
+
+        a {
+            display: block;
+            border-bottom: 1px solid #fff;
+            text-decoration: none;
+            background-color: #00f;
+            color: #fff;
+            padding: 0.5em;
+        }
+
+        li {
+            display: inline;
+        }
+
+        .hover {
+            background-color: #000;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function (event) {
+            $('.web').hide();
+            $('.prog').hide();
+            $('.rdbms').hide();
+
+            $('#webd').hover(
+                function (event) {
+                    $('.web').show();
+                    $('.prog').hide();
+                    $('.rdbms').hide();
+                    $('#webd').addClass('hover');
+                },
+                function () {
+                    $('#webd').removeClass('hover');
+                }
+            );
+
+            $('#pgmng').hover(
+                function () {
+                    $('.web').hide();
+                    $('.prog').show();
+                    $('.rdbms').hide();
+                    $('#pgmng').addClass('hover');
+                },
+                function () {
+                    $('#pgmng').removeClass('hover');
+                }
+            );
+
+            $('#datab').hover(
+                function () {
+                    $('.web').hide();
+                    $('.prog').hide();
+                    $('.rdbms').show();
+                    $('#datab').addClass('hover');
+                },
+                function () {
+                    $('#datab').removeClass('hover');
+                }
+            );
+        });
+    </script>
+</head>
+
+<body>
+    <table>
+        <td>
+            <ul>
+                <li>
+                    <a href="http://example.com">Books</a>
+                    <ul>
+                        <li>
+                            <a href="http://example.com" id="webd">Web Development</a>
+                        </li>
+                        <li>
+                            <a href="http://example.com" id="pgmng">Programming</a>
+                        </li>
+                        <li>
+                            <a href="http://example.com" id="datab">RDBMS</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </td>
+        <td valign=top>
+            <p class="web">The wide range of books that includes how Web development can be done with ASP.NET,PHP,JSP etc.</p>
+            <p class="prog">The wide range of books that includes developing Programming skills in C,C++,Java etc.</p>
+            <p class="rdbms">The wide range of books that includes how Data Base Management is done via Oracle,Mysql Server etc.</p>
+        </td>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #scroller {
+            height: 550px;
+            width: 320px;
+            overflow: hidden;
+            position: relative;
+            margin: auto;
+        }
+
+        #scroller a img {
+            border: 0;
+            position: relative;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            var $wrapper = $('#scroller a img');
+            $wrapper.css({ bottom: '900px' });
+            var animator = function (img) {
+                img.animate(
+                    { bottom: '-460px' }, 5000,
+                    function () {
+                        img.css({ bottom: '900px' });
+                        animator($(this));
+                    }
+                );
+            }
+            animator($wrapper);
+
+            $wrapper.hover(
+                function(){
+                    $wrapper.stop();//stop
+                },
+                function(){
+                    animator($wrapper);
+                }
+            );
+        });
+    </script>
+</head>
+
+<body>
+    <div id="scroller">
+        <a href="http://example.com">
+            <img src="images/1.jpg" width="320px" height="180px">
+        </a>
+        <a href="http://example.com">
+            <img src="images/2.jpg" width="320px" height="180px">
+        </a>
+        <a href="http://example.com">
+            <img src="images/3.jpg" width="320px" height="180px">
+        </a>
+        <a href="http://example.com">
+            <img src="images/4.jpg" width="320px" height="180px">
+        </a>
+        <a href="http://example.com">
+            <img src="images/5.jpg" width="320px" height="180px">
+        </a>
+    </div>
+</body>
+
+</html>

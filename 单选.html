@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单选</title>
+    <style>
+        .infobox {
+            margin-top: 15px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.error').hide();
+            $('.submit').click(function (event) {
+                var amt = 0;
+                var count = $('input:checked').length;
+                if (count == 0) {
+                    $('p.result').hide();
+                    $('.error').show();
+                } else {
+                    $('.error').hide();
+                    $('p.result').show();
+                    $('p.result').text('You have selected' + $('input:checked').attr("value"));
+                }
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <input type="radio" name="paymode" class="infobox" value="MasterCard">MasterCard
+        <br>
+        <input type="radio" name="paymode" class="infobox" value="ANZ Grindlay">ANZ Grindlay
+        <br>
+        <input type="radio" name="paymode" class="infobox" value="Visa Card">Visa Card
+        <br>
+        <p class="error">Select at least one Option</p>
+        <p class="result"></p>
+        <input type="submit" class="submit" value="Submit">
+    </form>
+</body>
+
+</html>

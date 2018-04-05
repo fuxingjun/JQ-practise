@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            position: relative;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('img').click(function () {
+                $(this).animate({
+                    left:600
+                },'slow',function(){
+                    $(this).fadeTo('slow',0);
+                    $(this).fadeTo('slow',1);
+                    $(this).animate({left:0},'slow');
+                });
+            });
+        });
+        $(document).keypress(function(event){
+            alert(String.fromCharCode(event.keyCode))
+        })
+    </script>
+</head>
+
+<body>
+    <img src="ball.jpg" alt="">
+</body>
+
+</html>

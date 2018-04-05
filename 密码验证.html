@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>密码验证</title>
+    <style>
+        .label {
+            float: left;
+            width: 120px;
+        }
+
+        .error {
+            color: red;
+            padding-left: 10px;
+        }
+
+        .submit {
+            margin-left: 125px;
+            margin-top: 10px;
+        }
+
+        div {
+            padding: 5px;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.error').hide();
+            $('.submit').click(function (event) {
+                data = $('.password').val();
+                var len = data.length;
+                if (len < 1) {
+                    $('.password').next().show();
+                } else {
+                    $('.password').next().hide();
+                }
+                if ($('.password').val() != $('.confpass').val()) {
+                    $('.confpass').next().show();
+                } else {
+                    $('.confpass').next().hide();
+                }
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <div>
+            <span class="label">User Id </span>
+            <input type="text" class="userid" name="userid">
+        </div>
+        <div>
+            <span class="label">Password </span>
+            <input type="password" class="password" name="password">
+            <span class="error">Password cannot be blank</span>
+        </div>
+        <div>
+            <span class="label">Confirm Password</span>
+            <input type="password" class="confpass" name="confpass">
+            <span class="error">Password and Confirm Password don't match</span>
+        </div>
+        <input type="submit" class="submit" value="Submit">
+    </form>
+</body>
+
+</html>

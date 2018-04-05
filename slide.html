@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slide</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#message1").css({
+                'border': "2px solid",
+                'text-align': "center",
+                'font-weight': "bold"
+            }).hide();
+            $("#message1").click(function () {
+                $(this).slideUp('slow');
+                $('#message2').slideDown('slow');
+            });
+            $("#message2").css({
+                'backgroundColor': "#f00",
+                'color': "#fff",
+                'text-align': "center",
+                'font-weight': "bold"
+            }).click(function () {
+                $(this).slideUp('slow');
+                $('#message1').slideDown('slow');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p id="message1">jQuery is an open source project</p>
+    <p id="message2">Manipulating DOM using jQuery</p>
+</body>
+
+</html>

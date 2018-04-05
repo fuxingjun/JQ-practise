@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        ul {
+            margin: 0;
+            list-style: none;
+        }
+
+        ul.dropdown li {
+            float: left;
+            background-color: cyan;
+        }
+
+        ul.dropdown a:hover {
+            background-color: #0f0;
+            color: #00f;
+        }
+
+        ul.dropdown li a {
+            display: block;
+            padding: 4px;
+            border-right: 1px solid #000;
+            min-width: 100px;
+        }
+
+        ul.dropdown ul {
+            width: 200px;
+            visibility: hidden;
+            position: absolute;
+        }
+
+        ul.dropdown ul li {
+            background-color: yellow;
+            border-bottom: 1px solid #000;
+        }
+
+        ul.dropdown ul li a {
+            border-right: none;
+            width: 100%;
+        }
+
+        ul.dropdown ul ul {
+            left: 100%;
+            top: 0;
+        }
+
+        .hover {
+            position: relative;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('ul.dropdown li').hover(
+                function () {
+                    $(this).addClass('hover');
+                    $('ul:first', this).css('visibility', 'visible');
+                },
+                function () {
+                    $(this).removeClass('hover');
+                    $('ul:first', this).css('visibility', 'hidden');
+                }
+            );
+            $('ul.dropdown li ul li:has(ul)').find('a:first').append('>');
+        });
+    </script>
+</head>
+
+<body>
+    <ul class="dropdown">
+        <li>
+            <a href="http://example.com">Books</a>
+            <ul>
+                <li>
+                    <a href="http://example.com">Programming</a>
+                </li>
+                <li>
+                    <a href="example.com">Web Development</a>
+                    <ul>
+                        <li>
+                            <a href="http://example.com">.Net</a>
+                        </li>
+                        <li>
+                            <a href="http://example.com">JSP</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="http://example.com">RDBMS</a>
+                </li>
+                <li>
+                    <a href="http://example.com">Web Services</a>
+                </li>
+                <li>
+                    <a href="http://example.com">Open Source</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="http://example.com">Movies</a>
+            <ul>
+                <li>
+                    <a href="http://examnple.com">Movies Reviews</a>
+                </li>
+                <li>
+                    <a href="http://example.com">Celebraty Interviews</a>
+                </li>
+                <li>
+                    <a href="http://example.com">Latest Hollywood Movies</a>
+                    <ul>
+                        <li>
+                            <a href="http://example.com">Arnold Schwarzenegger</a>
+                        </li>
+                        <li>
+                            <a href="http://example.com">Sylvester Stallone</a>
+                        </li>
+                        <li>
+                            <a href="http://example.com">Bruce Willies</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="http://examples.com">Action Movies</a>
+                    <ul>
+                        <li>
+                            <a href="examples.com">Casino Royale</a>
+                        </li>
+                        <li>
+                            <a href="examples.com">Rambo III</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="http://example.com">Comedy Movies</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>

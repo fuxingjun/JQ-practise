@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .plusimageapply {
+            list-style-image: url(images/plus.png);
+        }
+
+        .minusimageapply {
+            list-style-image: url(images/minus.png);
+        }
+
+        .noimage {
+            list-style-image: none;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('li.drink').addClass('plusimageapply');
+            $('li.drink').children().addClass('noimage');
+            $('li.drink').children().hide();
+            $('li.drink').each(function () {
+                $(this).click(function (event) {
+                    if (this == event.target) {//event.target最里面的元素
+                        if($(this).is('.plusimageapply')){
+                            $(this).children().show();
+                            $(this).removeClass('plusimageapply');
+                            $(this).addClass('minusimageapply');
+                        }else{
+                            $(this).children().hide();
+                            $(this).removeClass('minusimageapply');
+                            $(this).addClass('plusimageapply');
+                        }
+                        // event.stopPropagation();//与上面if判断效果相同，不不不：if判断效果更好，点子元素不会有效果
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li class="drink">Tea
+            <ul>
+                <li>Darjeeling</li>
+                <li class="drink">Assam
+                    <ul>
+                        <li>Green Leaves</li>
+                        <li>Herbal</li>
+                    </ul>
+                </li>
+                <li>Kerala</li>
+            </ul>
+        </li>
+        <li class="drink">Coffee
+            <ul>
+                <li>Cochin</li>
+                <li>Kerala</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>

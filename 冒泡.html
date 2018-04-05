@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒泡</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(event){
+                var $target = $(event.target);
+                if($target.is("div")){
+                    alert("Div Element");
+                }
+                if($target.is("p")){
+                    alert("p element");
+                }
+                if($target.is("span")){
+                    alert("span element");
+                }
+                
+            });
+            // $("p").click(function(){
+            //     alert("p element");
+            // });
+            // $("span").click(function(){
+            //     alert("span element");
+            // });
+        });
+    </script>
+</head>
+<body>
+    <div>Div Element
+        <p>Paragraph Element<br>
+            <span>Span Element</span>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>复选</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <style>
+        .infobox {
+            margin-top: 15px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".error").hide();
+            $('.submit').click(function (event) {
+                var count = 0;
+                var amt = 0;
+                $("form").find(":checkbox").each(function () {
+                    if ($(this).is(':checked')) {
+                        count++;
+                        amt = amt + parseInt($(this).val());
+                    }
+                });
+                if (count == 0) {
+                    $('p.result').hide();
+                    $('.error').show();
+                } else {
+                    $('.error').hide();
+                    $('p.result').show();
+                    $('p.result').text("Your bill is $" + amt);
+                }
+                console.log(count);
+                console.log(amt);
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <input type="checkbox" id="pizza" value=5 class="infobox">Pizza $5
+        <br>
+        <input type="checkbox" id="hotdog" name="hotdog" value=2 class="infobox">Hotdog $2
+        <br>
+        <input type="checkbox" id="coke" name="coke" value=1 class="infobox">Coke $1
+        <br>
+        <input type="checkbox" id="fries" name="fries" value=3 class="infobox">French Fries $3
+        <br>
+        <p class="error">Select at least one checkbox</p>
+        <p class="result"></p>
+        <input type="submit" class="submit" value="Submit">
+    </form>
+</body>
+
+</html>

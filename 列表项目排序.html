@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            var drinks = $('ul').children('li').get();//原生元素
+            drinks.sort(function (a, b) {
+                var val1 = $(a).text().toUpperCase();
+                var val2 = $(b).text().toUpperCase();
+                return (val1 < val2) ? -1 : 1;
+            });
+
+            $.each(drinks, function (index, value) {
+                $('ul').append(value);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>Tea</li>
+        <li>Coffee</li>
+        <li>Pepsi</li>
+        <li>Enermy Drink</li>
+        <li>Soup</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>更多.......</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".message").hide();
+            $("a.readmore").click(function(){
+                if($(".message").css("display") == "none"){
+                    $(".message").fadeIn('slow');
+                    $(this).text("Read more...");
+                }else{
+                    $(".message").fadeOut('slow');
+                    $(this).text("Read less...");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>五分钟带你了解“正义联盟”的前世今生</div>
+    <a class="readmore" href="#">Read more...</a>
+    <div class="message">
+    虽然超人和蝙蝠侠也是原始“正义联盟”的成员，但他们到第9集才出现在正义联盟的漫画中，之后其他超级英雄陆续加入团队，有绿箭侠Oliver Queen，原子侠和鹰侠，70年代正义联盟总部搬到地球的一个卫星上，被称作是“正义联盟守望塔”联盟成员也开始扩张，像是黑金丝雀、鹰女性、扎坦娜、红色旋风、伸缩人和火风暴。
+    这个组合合作了长约10年时间，直到80年代早期，蝙蝠侠离开正义联盟，另组局外人，海王接手解散原本的正义联盟，只让可以全心加入正义联盟的旧成员加入。除了海王之外，新的正义联盟成员还有扎坦娜、火星猎人和伸缩人，还有新成员比如震波、吉普赛、港人和雌狐。这些成员目前都出现在绿箭宇宙的电视剧中：包括《明日传奇》和《闪电侠》。
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 200px;
+        }
+
+        ul li ul {
+            list-style-type: none;
+            margin: 5px;
+            width: 200px;
+        }
+
+        a {
+            display: block;
+            border-bottom: 1px solid #fff;
+            text-decoration: none;
+            background-color: #00f;
+            color: #fff;
+            padding: 0.5em;
+        }
+
+        li {
+            display: inline;
+        }
+
+        .hover {
+            background-color: #000;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#contextmenu').hide();
+            $('.info').mousedown(function (event) {
+                if (event.button == 2) {
+                    $('#contextmenu').show();
+                    $('#contextmenu').css({
+                        "position": "absolute",
+                        "left": event.screenX,
+                        "top": event.screenY - 70
+                    });
+                }
+            });
+            $('a').hover(
+                function () {
+                    $(this).addClass('hover');
+                },
+                function () {
+                    $(this).removeClass('hover');
+                }
+            );
+            $('body').keydown(function (event) {//不能用keypress
+                if (event.keyCode == 27) {
+                    $('#contextmenu').hide();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body oncontextmenu="return false">
+    <p class="info">Books are the world of information. Books are our best friends. A wise man always has a library of several books</p>
+    <ul id="contextmenu">
+        <li>
+            <a href="http://example.com">Books</a>
+            <ul>
+                <li>
+                    <a href="http://example.com">Web developments</a>
+                </li>
+                <li>
+                    <a href="http://example.com">Programming</a>
+                </li>
+                <li>
+                    <a href="http://example.com">RDBMS</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>

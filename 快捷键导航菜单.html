@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 200px;
+        }
+
+        ul li ul {
+            list-style-type: none;
+            margin: 5px;
+            width: 200px;
+        }
+
+        a {
+            display: block;
+            border-bottom: 1px solid #fff;
+            text-decoration: none;
+            background-color: #00f;
+            color: #fff;
+            padding: .5em;
+        }
+
+        li {
+            display: inline;
+        }
+
+        .hover {
+            background-color: #000;
+        }
+
+        .hot {
+            text-decoration: underline;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.web').hide();
+            $('.prog').hide();
+            $('.rdbms').hide();
+
+            $('#webd').hover(
+                function () {
+                    $('.web').show();
+                    $('.prog').hide();
+                    $('.rdbms').hide();
+                    $('#webd').addClass('hover');
+                },
+                function () {
+                    $('#webd').removeClass('hover');
+                }
+            );
+            $('#pgmng').hover(
+                function () {
+                    $('.web').hide();
+                    $('.prog').show();
+                    $('.rdbms').hide();
+                    $('#pgmng').addClass('hover');
+                },
+                function () {
+                    $('#pgmng').removeClass('hover');
+                }
+            );
+            $('#datab').hover(
+                function () {
+                    $('.web').hide();
+                    $('.prog').hide();
+                    $('.rdbms').show();
+                    $('#datab').addClass('hover');
+                },
+                function () {
+                    $('#datab').removeClass('hover');
+                }
+            );
+            $('#datab').click(
+                function () {
+                    alert(111);
+                }
+            );
+
+            $('body').keypress(function (event) {
+                if (String.fromCharCode(event.keyCode) == "w" || String.fromCharCode(event.keyCode) == "W") {
+                    $('#webd').hover();
+                }
+                if (String.fromCharCode(event.keyCode) == "p" || String.fromCharCode(event.keyCode) == "P") {
+                    $('#pgmng').hover();
+                }
+                if (String.fromCharCode(event.keyCode) == "r" || String.fromCharCode(event.keyCode) == "R") {
+                    $('#datab').hover();//不能触发
+                    // $('#datab').click();//能触发
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <table>
+        <td>
+            <ul>
+                <li>
+                    <a href="http://example.com">Books</a>
+                </li>
+                <ul>
+                    <li>
+                        <a href="http://example.com" id="webd">
+                            <span class="hot">W</span>eb Development
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://example.com" id="pgmng">
+                            <span class="hot">P</span>rogramming
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://example.com" id="datab">
+                            <span class="hot">R</span>DBMS
+                        </a>
+                    </li>
+                </ul>
+            </ul>
+        </td>
+        <td valign=top>
+            <p class="web">The wide range of books that includes how Web development can be done with ASP.NET,PHP,JSP etc.</p>
+            <p class="prog">The wide range of books that includes developing Programming skills in C,C++,Java etc.</p>
+            <p class="rdbms">The wide range of books that includes how Data Base Management is done via Oracle,Mysql Server stc.</p>
+        </td>
+    </table>
+</body>
+
+</html>

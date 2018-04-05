@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>end</title>
+    <style>
+        .hover{
+            color: blue;
+            background-color: cyan;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("div").children().clone().prependTo('div').addClass("hover");
+            // $("div").children().clone().prependTo('div').end().addClass("hover");//未达到预期
+        });
+    </script>
+</head>
+<body>
+    <div>Div Element
+        <p>Paragraph Element<br>
+            <span>Span Element</span>
+        </p>
+    </div>
+</body>
+</html>

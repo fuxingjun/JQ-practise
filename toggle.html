@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        button {
+            border-radius: 50%;
+            height: 50px;
+        }
+
+        .bold {
+            font-family: "楷体";
+            font-weight: bold;
+            background-color: red;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+    <button>迅雷挺住</button>
+    <br>
+    <span>WKB挺住</span>
+    <script>
+        var oBtn = $("button");
+        oBtn.click(function () {
+            $(this).toggleClass("bold");
+            $("span").toggle();
+        });
+        oBtn.hover(
+            function(){
+                $('span').addClass("bold");
+            },
+            function(){
+                $("span").removeClass("bold");
+            }
+        );
+    </script>
+</body>
+
+</html>

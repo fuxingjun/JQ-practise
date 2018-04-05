@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .label {
+            float: left;
+            width: 180px;
+        }
+
+        .infobox {
+            width: 120px;
+        }
+
+        .error {
+            color: red;
+            padding-left: 10px;
+        }
+
+        .submit {
+            margin-left: 185px;
+            margin-top: 10px;
+        }
+
+        div {
+            padding: 5px;
+        }
+
+        .chkb {
+            margin-left: 185px;
+            margin-top: 10px;
+        }
+
+        .radiobtn {
+            margin-left: 185px;
+            margin-top: 10px;
+        }
+
+        .fooderror {
+            color: red;
+        }
+
+        .payerror {
+            color: red;
+        }
+        .inputs{
+            background-color: cyan;
+        }
+        fieldset{
+            border: 1px solid #888;
+        }
+        legend{
+            border: 1px solid #888;
+            background-color: cyan;
+            color: blue;
+            font-weight: bold;
+            padding: .5em;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".error").hide();
+            $(".fooderror").hide();
+            $(".payerror").hide();
+
+            $('.userid').focus(function(){
+                $(this).addClass('inputs');
+            });
+            $('.password').focus(function(){
+                $(this).addClass("inputs");
+            });
+            $('.emailadd').focus(function(){
+                $(this).addClass("inputs");
+            });
+            $(".submit").click(function (event) {
+                var data = $(".userid").val();
+                if (validate_userid(data)) {
+                    $(".userid").next().hide();
+                } else {
+                    $(".userid").next().show();
+                }
+
+                data = $('.password').val();
+                var len = data.length;
+                if (len < 1) {
+                    $('.password').next().show();
+                } else {
+                    $('.password').next().hide();
+                }
+
+                data = $('.emailadd').val();
+                if (valid_email(data)) {
+                    $('emailadd').next().hide();
+                } else {
+                    $('.emailadd').next().show();
+                }
+
+                var count = 0;
+                $('div').find(":checkbox").each(function () {
+                    if ($(this).is(":checked")) {
+                        count++;
+                    }
+                });
+                if (count == 0) {
+                    $(".fooderror").css({ "margin-left": 200 }).show();
+                } else {
+                    $(".fooderror").hide();
+                }
+
+                count = 0;
+                $('div').find(':radio').each(function () {
+                    if ($(this).is(":checked")) {
+                        count++;
+                    }
+                });
+                if (count == 0) {
+                    $('.payerror').css({ "margin-left": 200 }).show();
+                } else {
+                    $(".payerror").hide();
+                }
+
+                count = $("select option:selected").val();
+                if (count == 0) {
+                    $("infobox").next().show();
+                } else {
+                    $("infobox").next().hide();
+                }
+                event.preventDefault();
+            });
+        });
+        function valid_email(email) {
+            var reg = new RegExp(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/);
+            return reg.test(email);
+        }
+        function validate_userid(uid) {
+            var reg = new RegExp(/^[a-z0-9_]+$/);
+            return reg.test(uid);
+        }
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend>Enter Your Information</legend>
+            <div>
+                <span class="label">User Id </span>
+                <input type="text" class="userid" name="userid">
+                <span class="error">User id cannot contain only numeral,character or _(underscore)</span>
+            </div>
+            <div>
+                <span class="label">Password</span>
+                <input type="password" class="password" name="password">
+                <span class="error">Password connot be blank</span>
+            </div>
+            <div>
+                <span class="label">Email Address</span>
+                <input type="text" class="emailadd" name="emailadd">
+                <span class="error">Invalid email address</span>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div>
+                <span class="label">Select Food Items</span>
+                <br>
+                <input type="checkbox" id="pizza" name="pizza" value=5 class="chkb">Pizza $5
+                <br>
+                <input type="checkbox" id="hotdog" name="hotdog" value=2 class="chkb">Hotdog $2
+                <br>
+                <input type="checkbox" id="coke" name="coke" value=1 class="chkb">Coke $1
+                <br>
+                <input type="checkbox" id="fries" name="fries" value=3 class="chkb">French Fries $3
+                <br>
+                <span class="fooderror">You have not selected any food item</span>
+            </div>
+            <div>
+                <span class="label">Mode of Payment</span>
+                <br>
+                <input type="radio" name="paymode" class="radiobtn" value="ANZ Grindlay Card">ANZ Grindlay Card
+                <br>
+                <input type="radio" name="paymode" class="radiobtn" value="Visa Card">Visa Card
+                <br>
+                <span class="payerror">You have not selected any payment method</span>
+            </div>
+        </fieldset>
+            
+        <fieldset>
+            
+        <div>
+            <span class="label">Country</span>
+            <select name="" id="country" class="infobox">
+                <option value="0">Select a Country</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="India">India</option>
+                <option value="China">China</option>
+            </select>
+        </fieldset>
+            <span class="error">Please select the country</span>
+        </div>
+        <input type="submit" class="submit" value="Submit">
+    </form>
+</body>
+
+</html>

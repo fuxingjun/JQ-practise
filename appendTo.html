@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>appendTo</title>
+    <style>
+        .buttons {
+            width: 150px;
+            float: left;
+            text-align: center;
+            color: black;
+            background-color: red;
+            margin: 5px;
+            font-weight: bold;
+        }
+
+        .hover {
+            color: red;
+            background: url(1.png);
+            background-repeat: no-repeat;
+            background-position: bottom;
+        }
+
+        .showtip {
+            display: block;
+            margin: 20px;
+            position: relative;
+            top: 10px;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".buttons").hover(
+                function () {
+                    $(this).addClass("hover");
+                    var $txt = $(this).text();
+                    $("<span class = 'showtip'>This is " + $txt + " menu</span>").appendTo($(this));
+                },
+                function () {
+                    $(this).removeClass("hover");
+                    $(".showtip").remove();
+                }
+            );
+
+        });
+    </script>
+</head>
+
+<body>
+    <span class="bold buttons">Bold</span>
+    <span class="italic buttons">Italic</span>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全选</title>
+    <style>
+        .infobox {
+            padding: 5px;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#checkall').click(function () {
+                $("input[type='checkbox']").prop('checked', $('#checkall').is(':checked')); //jq attr有bug
+                // var aaaa = document.getElementsByTagName('input');
+                // if ($('#checkall').is(':checked')) {
+                //     for (var i = 0; i < aaaa.length; i++) {
+                //         aaaa[i].checked = true;
+                //     }
+                // } else {
+                //     for (var i = 0; i < aaaa.length; i++) {
+                //         aaaa[i].checked = false;
+                //     }
+                // }
+            });
+            $('form').find(':checkbox').click(function () {
+                var amt = 0;
+                $('div:gt(0)').find(':checkbox').each(function () {
+                    if ($(this).is(':checked')) {
+                        amt = amt + parseInt($(this).val());
+                    }
+                });
+                $('p').remove();
+                $('<p>').insertAfter('div:eq(4)');
+                $("p").text('Your bill is $ ' + amt);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <div class="infobox">
+            <input type="checkbox" id="checkall">Check/Uncheck all Checkboxes
+        </div>
+        <div class="infobox">
+            <input type="checkbox" id="pizza" name="pizza" value="5">Pizza $5
+        </div>
+        <div class="infobox">
+            <input type="checkbox" id="hotdog" name="hotdog" value="2">Hotdog $2
+        </div>
+        <div class="infobox">
+            <input type="checkbox" id="coke" name="coke" value="1">Coke $1
+        </div>
+        <div class="infobox">
+            <input type="checkbox" id="fries" name="fries" value="3">French Fries $3
+        </div>
+    </form>
+</body>
+
+</html>

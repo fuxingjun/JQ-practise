@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .mainmenu {
+            float: left;
+            width: 200px;
+            list-style-type: none;
+            margin-right: 5px;
+        }
+
+        li.mainmenu {
+            margin: 0;
+        }
+
+        a {
+            width: 200px;
+            display: block;
+            text-decoration: none;
+            background-color: #00f;
+            color: #fff;
+            padding: 0.5em;
+            border-bottom: 1px solid #fff;
+        }
+
+        ul#dropdownmenu li a:hover {
+            background-color: #000;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('ul ul').hide();
+            $('li.mainmenu').hover(
+                function () {
+                    $('ul', this).show();
+                },
+                function () {
+                    $('ul', this).hide();
+                }
+            );
+        });
+    </script>
+</head>
+
+<body>
+    <ul id="dropdownmenu">
+        <li class="mainmenu">
+            <a href="example.com">Books</a>
+            <ul>
+                <li>
+                    <a href="example.com">Web Development</a>
+                </li>
+                <li>
+                    <a href="example.com">Programming</a>
+                </li>
+                <li>
+                    <a href="example.com">RDBMS</a>
+                </li>
+            </ul>
+        </li>
+        <li class="mainmenu">
+            <a href="example.com">Movies</a>
+            <ul>
+                <li>
+                    <a href="example.com">Latest Movies Trailers</a>
+                </li>
+                <li>
+                    <a href="example.com">Movies Reviews</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>

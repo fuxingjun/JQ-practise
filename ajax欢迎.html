@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#submit').click(function () {
+                var name = $('.uname').val();
+                var data = 'uname=' + name;
+                // $.ajax({
+                //     type: "POST",
+                //     url: "http://localhost:7000",
+                //     data: "uname=" + name,
+                //     // dataType: 'jsonp',
+                //     // crossDomain: true,
+                //     success: function (html) {
+                //         console.log(html);
+                //         // $('#message').html("Welcome "+html.uname);
+                //         $('#message').html(html);
+                //     },
+                //     error: function (error) {
+                //         console.log(error);
+                //     }
+                // });
+                $.post(
+                    "http://localhost:7000",
+                    data,
+                    function (html) {
+                        $('#message').html(html);
+                    }
+                );
+                return false;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Enter your name</label>
+        <input type="text" name="uname" class="uname">
+        <br>
+        <input type="submit" id="submit">
+    </form>
+    <div id="message"></div>
+</body>
+
+</html>

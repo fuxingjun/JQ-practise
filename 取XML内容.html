@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#submit').click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "student.xml",
+                    dataType: "xml",
+                    success: function (data) {
+                        var stud = "<table border = '1'>";
+
+                        $(data).find('student').each(function () {
+                            var roll = $(this).find("roll").text();
+                            var fname = $(this).find("first-name").text();
+                            var lname = $(this).find("last-name").text();
+                            var marks = $(this).find("marks").text();
+                            stud += "<tr><td>" + roll + "</td><td>" + fname + "</td><td>" + marks + "</td></tr>";
+                        });
+
+                        stud += "</table>";
+                        $("#message").append(stud);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p>To see the Names of the students extracted from XML file click the buttons given below:</p>
+    <input type="submit" id="submit">
+    <div id="message"></div>
+</body>
+
+</html>

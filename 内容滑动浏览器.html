@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .small img {
+            border: none;
+            margin: 10px;
+            /* width: 60px; */
+            height: 60px;
+        }
+
+        .large {
+            width: 320px;
+            height: 180px;
+        }
+
+        .hover {
+            color: blue;
+            background-color: cyan;
+        }
+
+        p {
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function(){
+            $('.small').hover(
+                function(){
+                    $(this).parent().addClass('hover');
+                    var imgname = $(this).attr("href");
+                    $('.large').fadeTo(
+                        'slow',0,
+                        function(){
+                            $('.large').attr("src",imgname);
+                        }
+                    ).fadeTo('slow',1);
+                },function(){
+                    $(this).parent().removeClass('hover');
+                }
+            );
+        });
+    </script>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <td width='150' align=center>
+                <a href="images/1.jpg" class="small">
+                    <img src="images/1.jpg" alt="">
+                </a>
+                <p>"Model:M1001. Price 100$"</p>
+            </td>
+            <td rowspan='4' width='320' align=center>
+                <img src="images/1.jpg" alt="" class="large">
+            </td>
+        </tr>
+        <tr>
+            <td width='150' align=enter>
+                <a href="images/2.jpg" class="small">
+                    <img src="images/2.jpg" alt="">
+                </a>
+                <p>"Model:M1002. Price 150$"</p>
+            </td>
+        </tr>
+        <tr>
+            <td width='150' align=enter>
+                <a href="images/3.jpg" class="small">
+                    <img src="images/3.jpg" alt="">
+                </a>
+                <p>"Model:M1003. Price 90$"</p>
+            </td>
+        </tr>
+        <tr>
+            <td width='150' align=enter>
+                <a href="images/4.jpg" class="small">
+                    <img src="images/4.jpg" alt="">
+                </a>
+                <p>"Model:M1004. Price 200$"</p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

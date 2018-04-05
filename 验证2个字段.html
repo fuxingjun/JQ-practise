@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证两个字段</title>
+    <style>
+        .label {
+            float: left;
+            width: 120px;
+        }
+
+        .infobox {
+            width: 200px;
+        }
+
+        .error {
+            color: red;
+            padding-left: 10px;
+        }
+
+        .submit {
+            margin-left: 125px;
+            margin-top: 10px;
+        }
+
+        div {
+            padding: 5px;
+        }
+    </style>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.error').hide();
+            // $('.infobox').each(function () {
+            //     $(this).blur(function () {
+            //         var data = $(this).val();
+            //         var len = data.length;
+            //         if (len < 1) {
+            //             $(this).parent().find('.error').show();
+            //         } else {
+            //             $(this).parent().find('.error').hide();
+            //         }
+            //     });
+            // });
+            $('.submit').click(function (event) {
+                $('.infobox').each(function () {
+                    var data = $(this).val();
+                    var len = data.length;
+                    if (len < 1) {
+                        $(this).parent().find('.error').show();
+                    } else {
+                        $(this).parent().find('.error').hide();
+                    }
+                });
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <span class="label">User Id *</span>
+        <input type="text" class="infobox" name="userid">
+        <span class="error">This field cannot ba blank</span>
+    </div>
+    <div>
+        <span class="label">Password *</span>
+        <input type="password" class="infobox" name="password">
+        <span class="error">This field cannot ba blank</span>
+    </div>
+    <input type="submit" class="submit" value="Submit">
+</body>
+
+</html>
